@@ -1,0 +1,6 @@
+﻿  GameInfo.cpp
+C:\Users\jbrew\Documents\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(92,15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  IndustryEngagementApp.cpp
+  Generating Code...
+C:\Users\jbrew\Documents\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(100): warning C4715: 'game::Vector2::Normalize': not all control paths return a value
+  IndustryEngagementApp.vcxproj -> C:\Users\jbrew\Documents\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe
