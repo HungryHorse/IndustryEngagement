@@ -7,14 +7,18 @@ using namespace game;
 
 int main()
 {
-    Vector2 oneRight(1,5);
-    Vector2 twoRight = oneRight + Vector2::Right();
+    Vector2 oneRight(1,1);
+	Vector2& rOneRight = oneRight;
+    Vector2 twoRight = rOneRight + Vector2::Right();
+
+	Map gMap(4, 4);
+	gMap.Generate();
+
     std::cout << twoRight.getX() << std::endl;
     std::cout << twoRight.Magnitude() << std::endl;
     std::cout << twoRight.Direction() << std::endl;
-    std::cout << twoRight.Normalize().getX() << std::endl;
+	std::cout << twoRight.Normalize().getX() << std::endl;
     std::cout << Vector2::Distance(oneRight, twoRight) << std::endl;
-    std::cout << "Hello World!\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

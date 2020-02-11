@@ -1,6 +1,10 @@
-﻿  GameInfo.cpp
-C:\Users\jbrew\Documents\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(92,15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  IndustryEngagementApp.cpp
+﻿  IndustryEngagementApp.cpp
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(185,38): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  GameInfo.cpp
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(185,35): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(89,15): warning C4244:  'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(185,38): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
-C:\Users\jbrew\Documents\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(100): warning C4715: 'game::Vector2::Normalize': not all control paths return a value
-  IndustryEngagementApp.vcxproj -> C:\Users\jbrew\Documents\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(185,35): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(185,35): warning C4244: C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(97) : warning C4715: 'game::Vector2::Normalize': not all control paths return a value
+  IndustryEngagementApp.vcxproj -> C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe

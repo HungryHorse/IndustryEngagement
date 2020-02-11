@@ -1,10 +1,7 @@
 #include <math.h>
+#include <vector>
 
 namespace game {
-
-	class Map {
-
-	};
 
 	class Vector2 {
 
@@ -101,5 +98,104 @@ namespace game {
 		static float Distance(Vector2 vecOne, Vector2 vecTwo) {
 			return fabsf(vecOne.Magnitude() - vecTwo.Magnitude());
 		}
+	};
+
+
+	enum NodeType { Passable, Impassable };
+
+	class Node {
+	public:
+		Vector2 location;
+		NodeType type;
+		float travelCost;
+		char asciiRep;
+		char currAscii;
+
+		Node() {
+			location = Vector2();
+			type = NodeType::Passable;
+			travelCost = 1.0f;
+			switch (type) {
+			case NodeType::Passable:
+				asciiRep = 'o';
+				break;
+			case NodeType::Impassable:
+				asciiRep = '#';
+				break;
+			default:
+				break;
+			}
+			currAscii = asciiRep;
+		}
+
+		Node(Vector2 positionToSpawn, NodeType spawnType) {
+			location = positionToSpawn;
+			type = spawnType;
+			travelCost = 1.0f;
+			switch (spawnType) {
+			case NodeType::Passable:
+				asciiRep = 'o';
+				break;
+			case NodeType::Impassable:
+				asciiRep = '#';
+				break;
+			default:
+				break;
+			}
+			currAscii = asciiRep;
+		}
+
+		Node(Vector2 positionToSpawn, NodeType spawnType, float initialCost) {
+			location = positionToSpawn;
+			type = spawnType;
+			travelCost = initialCost;
+			switch (spawnType) {
+			case NodeType::Passable:
+				asciiRep = 'o';
+				break;
+			case NodeType::Impassable:
+				asciiRep = '#';
+				break;
+			default:
+				break;
+			}
+			currAscii = asciiRep;
+		}
+	};
+
+	class Map {
+	private:
+		int _sizeX;
+		int _sizeY;
+	public:
+
+		std::vector<std::vector<Node>> gameMap;
+
+		Map(int sizeX, int sizeY) {
+			_sizeX = sizeX;
+			_sizeY = sizeY;
+		}
+
+		void Generate()
+		{
+			for (int i = 0; i < _sizeY; i++)
+			{
+				for (int j = 0; j < _sizeX; i++) {
+
+					gameMap[j][i] = Node(Vector2(j, i), NodeType::Passable);
+
+				}
+			}
+		}
+	};
+
+	class Transform {
+	public:
+		Vector2 position;
+	};
+
+	class GameObject {
+	public:
+		Transform transform;
 	};
 }
