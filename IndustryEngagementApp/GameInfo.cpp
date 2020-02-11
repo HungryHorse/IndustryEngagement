@@ -1,5 +1,7 @@
+#include <iostream>
 #include <math.h>
 #include <vector>
+
 
 namespace game {
 
@@ -101,15 +103,15 @@ namespace game {
 	};
 
 
-	enum NodeType { Passable, Impassable };
+	enum class NodeType { Passable, Impassable };
 
 	class Node {
 	public:
 		Vector2 location;
 		NodeType type;
 		float travelCost;
-		char asciiRep;
-		char currAscii;
+		char asciiRep = 'l';
+		char currAscii = 'l';
 
 		Node() {
 			location = Vector2();
@@ -180,11 +182,17 @@ namespace game {
 		{
 			for (int i = 0; i < _sizeY; i++)
 			{
-				for (int j = 0; j < _sizeX; i++) {
+				std::vector<Node> row;
 
-					gameMap[j][i] = Node(Vector2(j, i), NodeType::Passable);
+				for (int j = 0; j < _sizeX; j++) {
+
+					Node point(Vector2(j, i), NodeType::Passable);
+
+					row.push_back(point);
 
 				}
+
+				gameMap.push_back(row);
 			}
 		}
 	};
