@@ -173,6 +173,10 @@ namespace game {
 
 		std::vector<std::vector<Node>> gameMap;
 
+		Map() {
+
+		}
+
 		Map(int sizeX, int sizeY) {
 			_sizeX = sizeX;
 			_sizeY = sizeY;
@@ -195,6 +199,37 @@ namespace game {
 				gameMap.push_back(row);
 			}
 		}
+
+		void UpdateAscii(Vector2 position, char asciiChar)
+		{
+			gameMap.at(position.getX()).at(position.getY()).currAscii = asciiChar;
+		}
+
+		void RevertAscii(Vector2 position) 
+		{
+			Node referenceNode = gameMap.at(position.getX()).at(position.getY());
+
+			referenceNode.currAscii = referenceNode.asciiRep;
+		}
+
+		void RevertAscii() {
+			for(std::vector<Node> row : gameMap)
+			{
+				for (Node node : row) {
+					node.currAscii = node.asciiRep;
+				}
+			}
+		}
+
+		void OutPutMap() {
+			for (std::vector<Node> row : gameMap)
+			{
+				for (Node node : row) {
+					std::cout << node.currAscii << " ";
+				}
+				std::cout << std::endl;
+			}
+		}
 	};
 
 	class Transform {
@@ -205,5 +240,51 @@ namespace game {
 	class GameObject {
 	public:
 		Transform transform;
+		char asciiRep;
+	};
+
+	class Entity : public GameObject {
+	private:
+
+	public:
+
+		Map entityMap;
+		int health;
+		int damage;
+
+		void TakeDamage(Entity attacker) {
+			health -= attacker.damage;
+		}
+		void Heal(int health) {
+			health += health;
+		}
+
+	};
+
+	class Player : public Entity {
+	private:
+
+	public:
+
+		Player(Vector2 spawnLocation, Map gameMap) {
+			entityMap = gameMap;
+			transform.position = spawnLocation;
+			asciiRep = 'P';
+			damage = 1;
+		}
+
+		int getDamage() {
+			return damage;
+		}
+
+		void setDamage(int value) {
+			damage = value;
+		}
+
+		void MoveTo(Vector2 newPosition) {
+			entityMap.UpdateAscii(newPosition, asciiRep);
+			entityMap.RevertAscii(transform.position);
+			transform.position = newPosition;
+		}
 	};
 }

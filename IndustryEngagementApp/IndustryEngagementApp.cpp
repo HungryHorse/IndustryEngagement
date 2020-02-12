@@ -13,12 +13,8 @@ int main()
 
 	Map gMap(4, 4);
 	gMap.Generate();
-
-    std::cout << twoRight.getX() << std::endl;
-    std::cout << twoRight.Magnitude() << std::endl;
-    std::cout << twoRight.Direction() << std::endl;
-	std::cout << twoRight.Normalize().getX() << std::endl;
-    std::cout << Vector2::Distance(oneRight, twoRight) << std::endl;
+	gMap.UpdateAscii({0,0}, 'P');
+	gMap.OutPutMap();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
