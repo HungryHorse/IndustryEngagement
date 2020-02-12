@@ -174,7 +174,8 @@ namespace game {
 		std::vector<std::vector<Node>> gameMap;
 
 		Map() {
-
+			_sizeX = 0;
+			_sizeY = 0;
 		}
 
 		Map(int sizeX, int sizeY) {
@@ -251,14 +252,69 @@ namespace game {
 		Map entityMap;
 		int health;
 		int damage;
+		int range;
 
 		void TakeDamage(Entity attacker) {
 			health -= attacker.damage;
 		}
-		void Heal(int health) {
-			health += health;
+		void Heal(int healValue) {
+			health += healValue;
 		}
 
+		bool CheckMove(Vector2& newPosition) {
+			if (entityMap.gameMap.at(newPosition.getX()).at(newPosition.getY).type != NodeType::Impassable) {
+				return true;
+			}
+			return false;
+		}
+
+		void MoveTo(Vector2 newPosition) {
+			if (CheckMove(newPosition)) {
+				entityMap.UpdateAscii(newPosition, asciiRep);
+				entityMap.RevertAscii(transform.position);
+				transform.position = newPosition;
+			}
+		}
+
+		void MoveUp() {
+			Vector2 newPosition = transform.position + Vector2::Up();
+
+			if (CheckMove(newPosition)) {
+				entityMap.UpdateAscii(newPosition, asciiRep);
+				entityMap.RevertAscii(transform.position);
+				transform.position = newPosition;
+			}
+		}
+
+		void MoveDown() {
+			Vector2 newPosition = transform.position - Vector2::Up();
+
+			if (CheckMove(newPosition)) {
+				entityMap.UpdateAscii(newPosition, asciiRep);
+				entityMap.RevertAscii(transform.position);
+				transform.position = newPosition;
+			}
+		}
+
+		void MoveRight() {
+			Vector2 newPosition = transform.position + Vector2::Right();
+
+			if (CheckMove(newPosition)) {
+				entityMap.UpdateAscii(newPosition, asciiRep);
+				entityMap.RevertAscii(transform.position);
+				transform.position = newPosition;
+			}
+		}
+
+		void MoveLeft() {
+			Vector2 newPosition = transform.position - Vector2::Right();
+
+			if (CheckMove(newPosition)) {
+				entityMap.UpdateAscii(newPosition, asciiRep);
+				entityMap.RevertAscii(transform.position);
+				transform.position = newPosition;
+			}
+		}
 	};
 
 	class Player : public Entity {
@@ -271,20 +327,7 @@ namespace game {
 			transform.position = spawnLocation;
 			asciiRep = 'P';
 			damage = 1;
-		}
-
-		int getDamage() {
-			return damage;
-		}
-
-		void setDamage(int value) {
-			damage = value;
-		}
-
-		void MoveTo(Vector2 newPosition) {
-			entityMap.UpdateAscii(newPosition, asciiRep);
-			entityMap.RevertAscii(transform.position);
-			transform.position = newPosition;
+			range = 1;
 		}
 	};
 }
