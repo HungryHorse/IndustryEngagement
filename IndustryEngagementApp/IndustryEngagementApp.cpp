@@ -13,7 +13,9 @@ int main()
 
 	Map gMap(4, 4);
 	gMap.Generate();
-	gMap.UpdateAscii({0,0}, 'P');
+
+	Player player({0,0}, gMap);
+
 	gMap.OutPutMap();
 }
 

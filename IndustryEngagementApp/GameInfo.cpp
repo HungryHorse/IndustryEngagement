@@ -246,13 +246,21 @@ namespace game {
 
 	class Entity : public GameObject {
 	private:
+		Map empty;
 
 	public:
 
-		Map entityMap;
+		Map& entityMap;
 		int health;
 		int damage;
 		int range;
+
+		Entity() : entityMap(empty)
+		{
+			damage = 0;
+			health = 0;
+			range = 0;
+		}
 
 		void TakeDamage(Entity attacker) {
 			health -= attacker.damage;
@@ -261,8 +269,8 @@ namespace game {
 			health += healValue;
 		}
 
-		bool CheckMove(Vector2& newPosition) {
-			if (entityMap.gameMap.at(newPosition.getX()).at(newPosition.getY).type != NodeType::Impassable) {
+		bool CheckMove(Vector2 newPosition) {
+			if (entityMap.gameMap.at(newPosition.getX()).at(newPosition.getY()).type != NodeType::Impassable) {
 				return true;
 			}
 			return false;
@@ -322,12 +330,13 @@ namespace game {
 
 	public:
 
-		Player(Vector2 spawnLocation, Map gameMap) {
+		Player(Vector2 spawnLocation, Map& gameMap) {
 			entityMap = gameMap;
 			transform.position = spawnLocation;
 			asciiRep = 'P';
 			damage = 1;
 			range = 1;
+			entityMap.UpdateAscii(transform.position, asciiRep);
 		}
 	};
 }
