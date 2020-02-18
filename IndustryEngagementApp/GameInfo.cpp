@@ -72,7 +72,7 @@ namespace game {
 			return Vector2(1.0f, 1.0f);
 		}
 		static Vector2 Up() {
-			return Vector2(0.0f, 1.0f);
+			return Vector2(0.0f, -1.0f);
 		}
 		static Vector2 Right() {
 			return Vector2(1.0f, 0.0f);
@@ -203,14 +203,14 @@ namespace game {
 
 		void UpdateAscii(Vector2 position, char asciiChar)
 		{
-			gameMap.at(position.getX()).at(position.getY()).currAscii = asciiChar;
+			gameMap.at(position.getY()).at(position.getX()).currAscii = asciiChar;
 		}
 
 		void RevertAscii(Vector2 position) 
 		{
-			Node referenceNode = gameMap.at(position.getX()).at(position.getY());
+			Node *referenceNode = &gameMap.at(position.getY()).at(position.getX());
 
-			referenceNode.currAscii = referenceNode.asciiRep;
+			referenceNode->currAscii = referenceNode-> asciiRep;
 		}
 
 		void RevertAscii() {
@@ -246,21 +246,13 @@ namespace game {
 
 	class Entity : public GameObject {
 	private:
-		Map empty;
 
 	public:
 
-		Map& entityMap;
+		Map* mapPointer;
 		int health;
 		int damage;
 		int range;
-
-		Entity() : entityMap(empty)
-		{
-			damage = 0;
-			health = 0;
-			range = 0;
-		}
 
 		void TakeDamage(Entity attacker) {
 			health -= attacker.damage;
@@ -270,16 +262,21 @@ namespace game {
 		}
 
 		bool CheckMove(Vector2 newPosition) {
-			if (entityMap.gameMap.at(newPosition.getX()).at(newPosition.getY()).type != NodeType::Impassable) {
-				return true;
+			try {
+				if (mapPointer->gameMap.at(newPosition.getX()).at(newPosition.getY()).type != NodeType::Impassable) {
+					return true;
+				}
+			}
+			catch (...) {
+
 			}
 			return false;
 		}
 
 		void MoveTo(Vector2 newPosition) {
 			if (CheckMove(newPosition)) {
-				entityMap.UpdateAscii(newPosition, asciiRep);
-				entityMap.RevertAscii(transform.position);
+				mapPointer->UpdateAscii(newPosition, asciiRep);
+				mapPointer->RevertAscii(transform.position);
 				transform.position = newPosition;
 			}
 		}
@@ -288,9 +285,9 @@ namespace game {
 			Vector2 newPosition = transform.position + Vector2::Up();
 
 			if (CheckMove(newPosition)) {
-				entityMap.UpdateAscii(newPosition, asciiRep);
-				entityMap.RevertAscii(transform.position);
-				transform.position = newPosition;
+				mapPointer->UpdateAscii(newPosition, asciiRep);
+				mapPointer->RevertAscii(transform.position);
+ 				transform.position = newPosition;
 			}
 		}
 
@@ -298,8 +295,8 @@ namespace game {
 			Vector2 newPosition = transform.position - Vector2::Up();
 
 			if (CheckMove(newPosition)) {
-				entityMap.UpdateAscii(newPosition, asciiRep);
-				entityMap.RevertAscii(transform.position);
+				mapPointer->UpdateAscii(newPosition, asciiRep);
+				mapPointer->RevertAscii(transform.position);
 				transform.position = newPosition;
 			}
 		}
@@ -308,8 +305,8 @@ namespace game {
 			Vector2 newPosition = transform.position + Vector2::Right();
 
 			if (CheckMove(newPosition)) {
-				entityMap.UpdateAscii(newPosition, asciiRep);
-				entityMap.RevertAscii(transform.position);
+				mapPointer->UpdateAscii(newPosition, asciiRep);
+				mapPointer->RevertAscii(transform.position);
 				transform.position = newPosition;
 			}
 		}
@@ -318,8 +315,8 @@ namespace game {
 			Vector2 newPosition = transform.position - Vector2::Right();
 
 			if (CheckMove(newPosition)) {
-				entityMap.UpdateAscii(newPosition, asciiRep);
-				entityMap.RevertAscii(transform.position);
+				mapPointer->UpdateAscii(newPosition, asciiRep);
+				mapPointer->RevertAscii(transform.position);
 				transform.position = newPosition;
 			}
 		}
@@ -331,12 +328,20 @@ namespace game {
 	public:
 
 		Player(Vector2 spawnLocation, Map& gameMap) {
-			entityMap = gameMap;
+			mapPointer = &gameMap;
 			transform.position = spawnLocation;
 			asciiRep = 'P';
 			damage = 1;
 			range = 1;
-			entityMap.UpdateAscii(transform.position, asciiRep);
+			mapPointer->UpdateAscii(transform.position, asciiRep);
 		}
 	};
+
+	char GetInput()
+	{
+		char input;
+		std::cin >> input;
+
+		return toupper(input);
+	}
 }

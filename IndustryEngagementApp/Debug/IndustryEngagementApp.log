@@ -1,20 +1,11 @@
-﻿  GameInfo.cpp
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(194,28): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(194,25): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(206,28): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(206,48): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(211,49): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(211,69): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(273,45): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-  IndustryEngagementApp.cpp
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(273,68): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(194,28): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(194,25): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(206,28): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(206,48): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(211,49): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(211,69): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(273,45): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-  Generating Code...
-C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(273,68): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-  IndustryEngagementApp.vcxproj -> C:\Users\jjbrewer\Documents\GitKraken\IndustryEngagement\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe
+﻿  IndustryEngagementApp.cpp
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(194,28): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(194,25): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(206,28): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(206,48): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(211,51): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(211,71): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(266,48): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(266,71): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+GameInfo.obj : error LNK2005: "char __cdecl game::GetInput(void)" (?GetInput@game@@YADXZ) already defined in IndustryEngagementApp.obj
+C:\Users\jjbrewer\Documents\GitKraken\Industry\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe : fatal error LNK1169: one or more multiply defined symbols found

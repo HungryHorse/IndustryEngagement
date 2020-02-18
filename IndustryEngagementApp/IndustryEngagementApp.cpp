@@ -13,10 +13,38 @@ int main()
 
 	Map gMap(4, 4);
 	gMap.Generate();
+	 
+   	Player player({0,0}, gMap);
 
-	Player player({0,0}, gMap);
+	player.MoveUp();
+	player.MoveLeft();
+	player.MoveRight();
 
-	gMap.OutPutMap();
+	char input;
+
+	//GameLoop
+	do {
+		gMap.OutPutMap();
+
+		input = GetInput();
+
+		switch (input)
+		{
+			case 'W':
+				player.MoveUp();
+				break;
+			case 'A':
+				player.MoveRight();
+				break;
+			case 'S':
+				player.MoveDown();
+				break;
+			case 'D':
+				player.MoveLeft();
+				break;
+		}
+
+	} while (true);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
