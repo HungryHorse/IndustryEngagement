@@ -1,4 +1,4 @@
-﻿  IndustryEngagementApp.cpp
+﻿  GameInfo.cpp
 C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(216,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(216,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(228,28): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
@@ -7,6 +7,16 @@ C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\Game
 C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(233,71): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
 C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(290,48): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
 C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(290,71): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+  IndustryEngagementApp.cpp
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(216,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(216,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(228,28): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(228,48): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(233,51): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(233,71): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(290,48): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(290,71): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+  Generating Code...
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
 GameInfo.obj : warning LNK4006: "int __cdecl game::GetInput(void)" (?GetInput@game@@YAHXZ) already defined in IndustryEngagementApp.obj; second definition ignored
 C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe : warning LNK4088: image being generated due to /FORCE option; image may not run

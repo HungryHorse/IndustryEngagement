@@ -348,30 +348,38 @@ namespace game {
 		void AttackUp() {
 			Vector2 attackPosition = transform.position + Vector2::Up();
 
-			previousAttackPos = attackPosition;
+			if (CheckMove(attackPosition)) {
+				previousAttackPos = attackPosition;
 
-			mapPointer->UpdateAscii(attackPosition, attackRep);
+				mapPointer->UpdateAscii(attackPosition, attackRep);
+			}
 		}
 		void AttackDown() {
 			Vector2 attackPosition = transform.position - Vector2::Up();
 
-			previousAttackPos = attackPosition;
+			if (CheckMove(attackPosition)) {
+				previousAttackPos = attackPosition;
 
-			mapPointer->UpdateAscii(attackPosition, attackRep);
+				mapPointer->UpdateAscii(attackPosition, attackRep);
+			}
 		}
 		void AttackRight() {
 			Vector2 attackPosition = transform.position + Vector2::Right();
 
-			previousAttackPos = attackPosition;
+			if (CheckMove(attackPosition)) {
+				previousAttackPos = attackPosition;
 
-			mapPointer->UpdateAscii(attackPosition, attackRep);
+				mapPointer->UpdateAscii(attackPosition, attackRep);
+			}
 		}
 		void AttackLeft() {
 			Vector2 attackPosition = transform.position - Vector2::Right();
 
-			previousAttackPos = attackPosition;
+			if (CheckMove(attackPosition)) {
+				previousAttackPos = attackPosition;
 
-			mapPointer->UpdateAscii(attackPosition, attackRep);
+				mapPointer->UpdateAscii(attackPosition, attackRep);
+			}
 		}
 	};
 
