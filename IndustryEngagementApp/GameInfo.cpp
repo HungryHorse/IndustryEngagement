@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <conio.h>
 
 
 namespace game {
@@ -37,6 +38,24 @@ namespace game {
 			_y = newY;
 		}
 
+		friend bool operator!=(Vector2 lhs, Vector2 rhs) {
+			if (lhs.getX() != rhs.getX() || lhs.getY() != rhs.getY()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+
+		friend bool operator==(Vector2 lhs, Vector2 rhs) {
+			if (lhs.getX() == rhs.getX() || lhs.getY() == rhs.getY()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+
 		Vector2 operator+(Vector2 vecToAdd) {
 			return Vector2(_x + vecToAdd.getX(), _y + vecToAdd.getY());
 		}
@@ -61,6 +80,7 @@ namespace game {
 			return Vector2(_x / number, _y / number);
 		}
 
+
 		Vector2 div(float number) {
 			return Vector2(_x / number, _y / number);
 		}
@@ -76,6 +96,9 @@ namespace game {
 		}
 		static Vector2 Right() {
 			return Vector2(1.0f, 0.0f);
+		}
+		static Vector2 Null() {
+			return Vector2(-1.0f, -1.0f);
 		}
 		void Set(const Vector2& original){
 			_x = original._x;
@@ -101,7 +124,6 @@ namespace game {
 			return fabsf(vecOne.Magnitude() - vecTwo.Magnitude());
 		}
 	};
-
 
 	enum class NodeType { Passable, Impassable };
 
@@ -253,6 +275,8 @@ namespace game {
 		int health;
 		int damage;
 		int range;
+		char attackRep;
+		Vector2 previousAttackPos;
 
 		void TakeDamage(Entity attacker) {
 			health -= attacker.damage;
@@ -320,6 +344,35 @@ namespace game {
 				transform.position = newPosition;
 			}
 		}
+
+		void AttackUp() {
+			Vector2 attackPosition = transform.position + Vector2::Up();
+
+			previousAttackPos = attackPosition;
+
+			mapPointer->UpdateAscii(attackPosition, attackRep);
+		}
+		void AttackDown() {
+			Vector2 attackPosition = transform.position - Vector2::Up();
+
+			previousAttackPos = attackPosition;
+
+			mapPointer->UpdateAscii(attackPosition, attackRep);
+		}
+		void AttackRight() {
+			Vector2 attackPosition = transform.position + Vector2::Right();
+
+			previousAttackPos = attackPosition;
+
+			mapPointer->UpdateAscii(attackPosition, attackRep);
+		}
+		void AttackLeft() {
+			Vector2 attackPosition = transform.position - Vector2::Right();
+
+			previousAttackPos = attackPosition;
+
+			mapPointer->UpdateAscii(attackPosition, attackRep);
+		}
 	};
 
 	class Player : public Entity {
@@ -330,18 +383,19 @@ namespace game {
 		Player(Vector2 spawnLocation, Map& gameMap) {
 			mapPointer = &gameMap;
 			transform.position = spawnLocation;
-			asciiRep = 'P';
+			asciiRep = '@';
 			damage = 1;
 			range = 1;
 			mapPointer->UpdateAscii(transform.position, asciiRep);
+			attackRep = '|';
 		}
 	};
 
-	char GetInput()
+	int GetInput()
 	{
-		char input;
-		std::cin >> input;
+		int inputReturn;
+		inputReturn = _getch();
 
-		return toupper(input);
+		return inputReturn;
 	}
 }

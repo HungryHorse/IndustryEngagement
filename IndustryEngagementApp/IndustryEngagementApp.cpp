@@ -5,6 +5,11 @@
 #include "GameInfo.cpp"
 using namespace game;
 
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+
 int main()
 {
     Vector2 oneRight(1,1);
@@ -20,27 +25,57 @@ int main()
 	player.MoveLeft();
 	player.MoveRight();
 
-	char input;
+	int input;
+	int counter = 0;
 
 	//GameLoop
 	do {
+
+		counter++;
+
+		system("CLS");
+
+		if (player.previousAttackPos != Vector2::Null() && player.transform.position != player.previousAttackPos && counter > 1)
+		{
+			gMap.RevertAscii(player.previousAttackPos);
+			player.previousAttackPos = Vector2::Null();
+		}
+
 		gMap.OutPutMap();
 
 		input = GetInput();
 
 		switch (input)
 		{
-			case 'W':
+			case 119:
 				player.MoveUp();
 				break;
-			case 'A':
-				player.MoveRight();
+			case 97:
+				player.MoveLeft();
 				break;
-			case 'S':
+			case 115:
 				player.MoveDown();
 				break;
-			case 'D':
-				player.MoveLeft();
+			case 100:
+				player.MoveRight();
+				break;
+			case KEY_UP:
+				player.AttackUp();
+				counter = 0;
+				break;
+			case KEY_DOWN:
+				player.AttackDown();
+				counter = 0;
+				break;
+			case KEY_LEFT:
+				player.AttackLeft();
+				counter = 0;
+				break;
+			case KEY_RIGHT:
+				player.AttackRight();
+				counter = 0;
+				break;
+			default:
 				break;
 		}
 
