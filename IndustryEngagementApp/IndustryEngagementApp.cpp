@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <map>
 #include "GameInfo.cpp"
 using namespace game;
 
@@ -9,24 +10,23 @@ using namespace game;
 #define KEY_DOWN 80
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
+#define ESCAPE_KEY 27
 
 int main()
 {
-    Vector2 oneRight(1,1);
-	Vector2& rOneRight = oneRight;
-    Vector2 twoRight = rOneRight + Vector2::Right();
+	std::map<std::string, std::string> mapDictionary = {
+		{"MapOne", "map.txt"}
+	};
 
-	Map gMap(4, 4);
-	gMap.Generate();
+	Map gMap;
+	//gMap.Generate();
+	gMap.LoadFromFileName(mapDictionary.find("MapOne")->second);
 	 
-   	Player player({0,0}, gMap);
-
-	player.MoveUp();
-	player.MoveLeft();
-	player.MoveRight();
+   	Player player({1,1}, gMap, 10);
 
 	int input;
 	int counter = 0;
+	bool gamePlaying = true;
 
 	//GameLoop
 	do {
@@ -41,6 +41,7 @@ int main()
 			player.previousAttackPos = Vector2::Null();
 		}
 
+		player.OutputHealth();
 		gMap.OutPutMap();
 
 		input = GetInput();
@@ -75,11 +76,14 @@ int main()
 				player.AttackRight();
 				counter = 0;
 				break;
+			case ESCAPE_KEY:
+				gamePlaying = false;
+				break;
 			default:
 				break;
 		}
 
-	} while (true);
+	} while (gamePlaying);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

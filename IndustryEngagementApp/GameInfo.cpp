@@ -2,6 +2,8 @@
 #include <math.h>
 #include <vector>
 #include <conio.h>
+#include <fstream>
+#include <string>
 
 
 namespace game {
@@ -223,6 +225,48 @@ namespace game {
 			}
 		}
 
+		void LoadFromFileName(const std::string& filePath)
+		{
+			std::string line;
+
+			std::fstream file(filePath);
+
+			int xCord = 0;
+			int yCord = 0;
+			Node point;
+
+			if (file)
+			{
+				while (std::getline(file, line))
+				{
+					std::vector<Node> row;
+					for (char charVal : line) {
+						switch (charVal) {
+
+							case 'o':
+								point = Node(Vector2(xCord, yCord), NodeType::Passable);
+								break;
+							case '#':
+								point = Node(Vector2(xCord, yCord), NodeType::Impassable);
+								break;
+							default:
+								point = Node(Vector2(xCord, yCord), NodeType::Passable);
+								break;
+						}
+						row.push_back(point);
+						xCord++;
+					}
+					gameMap.push_back(row);
+					yCord++;
+				}
+				file.close();
+				return;
+			}
+
+			file.close();
+			return;
+		}
+
 		void UpdateAscii(Vector2 position, char asciiChar)
 		{
 			gameMap.at(position.getY()).at(position.getX()).currAscii = asciiChar;
@@ -272,6 +316,7 @@ namespace game {
 	public:
 
 		Map* mapPointer;
+		int maxHealth;
 		int health;
 		int damage;
 		int range;
@@ -281,13 +326,16 @@ namespace game {
 		void TakeDamage(Entity attacker) {
 			health -= attacker.damage;
 		}
+		void TakeDamage(int value) {
+			health -= value;
+		}
 		void Heal(int healValue) {
 			health += healValue;
 		}
 
 		bool CheckMove(Vector2 newPosition) {
 			try {
-				if (mapPointer->gameMap.at(newPosition.getX()).at(newPosition.getY()).type != NodeType::Impassable) {
+				if (mapPointer->gameMap.at(newPosition.getY()).at(newPosition.getX()).type != NodeType::Impassable) {
 					return true;
 				}
 			}
@@ -381,6 +429,29 @@ namespace game {
 				mapPointer->UpdateAscii(attackPosition, attackRep);
 			}
 		}
+
+		void OutputHealth() 
+		{
+			//std::cout << "Health: " << health << std::endl;
+			for (int i = 0; i < maxHealth + 2; i++) {
+				std::cout << '=';
+			}
+			std::cout << std::endl;
+			std::cout << '=';
+ 			for (int i = 0; i < health; i++) {
+				std::cout << '#';
+			}
+			for (int i = 0; i < maxHealth - health; i++) {
+				std::cout << ' ';
+			}
+			std::cout << '=';
+			std::cout << std::endl;
+			for (int i = 0; i < maxHealth + 2; i++) {
+				std::cout << '=';
+			}
+			std::cout << std::endl;
+			std::cout << std::endl;
+		}
 	};
 
 	class Player : public Entity {
@@ -388,9 +459,11 @@ namespace game {
 
 	public:
 
-		Player(Vector2 spawnLocation, Map& gameMap) {
+		Player(Vector2 spawnLocation, Map& gameMap, int maxHealthValue) {
 			mapPointer = &gameMap;
 			transform.position = spawnLocation;
+			maxHealth = maxHealthValue;
+			health = maxHealthValue;
 			asciiRep = '@';
 			damage = 1;
 			range = 1;
