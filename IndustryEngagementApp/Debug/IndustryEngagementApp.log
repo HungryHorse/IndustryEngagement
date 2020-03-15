@@ -1,35 +1,25 @@
-﻿  GameInfo.cpp
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(218,28): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(218,25): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(247,37): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(247,30): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(250,37): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(250,30): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(253,37): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(253,30): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(272,28): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(272,48): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(277,51): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(277,71): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(338,48): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-  IndustryEngagementApp.cpp
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(338,71): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(218,28): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(218,25): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(247,37): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(247,30): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(250,37): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(250,30): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(253,37): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(253,30): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(272,28): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(272,48): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(277,51): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(277,71): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(338,48): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
-  Generating Code...
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(338,71): warning C4244:  'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+﻿  IndustryEngagementApp.cpp
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(220,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(220,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(249,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(249,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(252,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(252,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(255,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(255,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(274,28): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(274,48): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(279,51): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(279,71): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(363,48): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\GameInfo.cpp(363,71): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+GameInfo.obj : warning LNK4006: "public: void __thiscall game::Manager::AddEntity(class game::Entity &)" (?AddEntity@Manager@game@@QAEXAAVEntity@2@@Z) already defined in IndustryEngagementApp.obj; second definition ignored
+GameInfo.obj : warning LNK4006: "public: void __thiscall game::Manager::Awake(void)" (?Awake@Manager@game@@QAEXXZ) already defined in IndustryEngagementApp.obj; second definition ignored
+GameInfo.obj : warning LNK4006: "public: class game::Entity * __thiscall game::Manager::GetEntityAtPos(class game::Vector2)" (?GetEntityAtPos@Manager@game@@QAEPAVEntity@2@VVector2@2@@Z) already defined in IndustryEngagementApp.obj; second definition ignored
 GameInfo.obj : warning LNK4006: "int __cdecl game::GetInput(void)" (?GetInput@game@@YAHXZ) already defined in IndustryEngagementApp.obj; second definition ignored
-C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
-  IndustryEngagementApp.vcxproj -> C:\Users\jjbrewer\Documents\GitKraken\Engagement\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe
+GameInfo.obj : warning LNK4006: "public: void __thiscall game::Manager::RemoveEntity(class game::Entity &)" (?RemoveEntity@Manager@game@@QAEXAAVEntity@2@@Z) already defined in IndustryEngagementApp.obj; second definition ignored
+IndustryEngagementApp.obj : error LNK2001: unresolved external symbol "private: static class game::Manager game::Manager::_instance" (?_instance@Manager@game@@0V12@A)
+GameInfo.obj : error LNK2001: unresolved external symbol "private: static class game::Manager game::Manager::_instance" (?_instance@Manager@game@@0V12@A)
+C:\Users\jbrew\Documents\GitKraken\IndustryEngagement\IndustryEngagementApp\Debug\IndustryEngagementApp.exe : fatal error LNK1120: 1 unresolved externals
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(847,5): error MSB6006: "link.exe" exited with code 1120.

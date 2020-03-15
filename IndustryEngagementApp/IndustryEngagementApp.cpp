@@ -14,6 +14,10 @@ using namespace game;
 
 int main()
 {
+	Manager gameManager;
+
+	gameManager.Awake();
+
 	std::map<std::string, std::string> mapDictionary = {
 		{"MapOne", "map.txt"}
 	};

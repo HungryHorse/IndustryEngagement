@@ -8,6 +8,8 @@
 
 namespace game {
 
+	class Entity;
+
 	class Vector2 {
 
 	private:
@@ -299,6 +301,29 @@ namespace game {
 		}
 	};
 
+
+	class Manager {
+	private:
+		static Manager _instance;
+		std::vector<Entity*> _entityList;
+		bool _instantiated = false;
+
+	public:
+
+		static Manager Instance() { return _instance; }
+		std::vector<Entity*> EntityList() { return _entityList; }
+		bool Instantiated() { return _instantiated; }
+		void Instantiated(bool value) { _instantiated = value; }
+
+		void AddEntity(Entity& entityToAdd);
+
+		void RemoveEntity(Entity& entityToRemove);
+
+		void Awake();
+
+		Entity* GetEntityAtPos(Vector2 pos);
+	};
+
 	class Transform {
 	public:
 		Vector2 position;
@@ -399,6 +424,12 @@ namespace game {
 			if (CheckMove(attackPosition)) {
 				previousAttackPos = attackPosition;
 
+				Entity* attacked = Manager::Instance().GetEntityAtPos(attackPosition);
+
+				if (attacked != NULL) {
+					attacked->TakeDamage(this->damage);
+				}
+
 				mapPointer->UpdateAscii(attackPosition, attackRep);
 			}
 		}
@@ -407,6 +438,12 @@ namespace game {
 
 			if (CheckMove(attackPosition)) {
 				previousAttackPos = attackPosition;
+
+				Entity* attacked = Manager::Instance().GetEntityAtPos(attackPosition);
+
+				if (attacked != NULL) {
+					attacked->TakeDamage(this->damage);
+				}
 
 				mapPointer->UpdateAscii(attackPosition, attackRep);
 			}
@@ -417,6 +454,12 @@ namespace game {
 			if (CheckMove(attackPosition)) {
 				previousAttackPos = attackPosition;
 
+				Entity* attacked = Manager::Instance().GetEntityAtPos(attackPosition);
+
+				if (attacked != NULL) {
+					attacked->TakeDamage(this->damage);
+				}
+
 				mapPointer->UpdateAscii(attackPosition, attackRep);
 			}
 		}
@@ -425,6 +468,12 @@ namespace game {
 
 			if (CheckMove(attackPosition)) {
 				previousAttackPos = attackPosition;
+
+				Entity* attacked = Manager::Instance().GetEntityAtPos(attackPosition);
+
+				if (attacked != NULL) {
+					attacked->TakeDamage(this->damage);
+				}
 
 				mapPointer->UpdateAscii(attackPosition, attackRep);
 			}
@@ -469,8 +518,72 @@ namespace game {
 			range = 1;
 			mapPointer->UpdateAscii(transform.position, asciiRep);
 			attackRep = '|';
+
+			Manager::Instance().AddEntity(*this);
 		}
 	};
+
+	class Enemy : public Entity {
+
+	public:
+
+		Enemy(Vector2 spawnLocation, Map& gameMap, int maxHealthValue) {
+			mapPointer = &gameMap;
+			transform.position = spawnLocation;
+			maxHealth = maxHealthValue;
+			health = maxHealthValue;
+			asciiRep = 'M';
+			damage = 1;
+			range = 1;
+			mapPointer->UpdateAscii(transform.position, asciiRep);
+			attackRep = '|';
+
+			Manager::Instance().AddEntity(*this);
+		}
+	};
+
+	void Manager::AddEntity(Entity& entityToAdd) {
+		_entityList.push_back(&entityToAdd);
+	}
+
+	void Manager::RemoveEntity(Entity& entityToRemove) {
+
+		int index = 0;
+
+		for (Entity* entity : _entityList) {
+
+			if (entity == &entityToRemove) {
+				break;
+			}
+			index++;
+		}
+
+		_entityList.erase(_entityList.begin() + index);
+	}
+
+	void Manager::Awake() {
+		if (_instance.Instantiated() == false) {
+			_instance = *this;
+			_instance.Instantiated(true);
+		}
+		else {
+			throw "You have tried to create another instance of a singleton";
+		}
+	}
+
+	Entity* Manager::GetEntityAtPos(Vector2 pos) {
+
+		for (Entity* entity : _entityList) {
+
+			if (entity->transform.position == pos) {
+				return entity;
+			}
+
+		}
+
+		return NULL;
+
+	}
 
 	int GetInput()
 	{
@@ -479,4 +592,5 @@ namespace game {
 
 		return inputReturn;
 	}
+
 }
