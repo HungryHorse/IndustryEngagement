@@ -304,25 +304,34 @@ namespace game {
 
 	class Manager {
 	private:
-		static Manager _instance;
+		static Manager* _instance;
 		std::vector<Entity*> _entityList;
-		bool _instantiated = false;
+		Manager() {
+			std::cout << "New Manager Created";
+			std::vector<Entity*> newList;
+			_entityList = newList;
+		};
 
 	public:
 
-		static Manager Instance() { return _instance; }
+		static Manager* Instance() 
+		{
+			if (_instance == NULL) {
+				_instance = new Manager;
+			}
+			return _instance; 
+		}
+
 		std::vector<Entity*> EntityList() { return _entityList; }
-		bool Instantiated() { return _instantiated; }
-		void Instantiated(bool value) { _instantiated = value; }
 
 		void AddEntity(Entity& entityToAdd);
 
 		void RemoveEntity(Entity& entityToRemove);
 
-		void Awake();
-
 		Entity* GetEntityAtPos(Vector2 pos);
 	};
+
+	Manager* Manager::_instance = NULL;
 
 	class Transform {
 	public:
@@ -424,7 +433,7 @@ namespace game {
 			if (CheckMove(attackPosition)) {
 				previousAttackPos = attackPosition;
 
-				Entity* attacked = Manager::Instance().GetEntityAtPos(attackPosition);
+				Entity* attacked = Manager::Instance()->GetEntityAtPos(attackPosition);
 
 				if (attacked != NULL) {
 					attacked->TakeDamage(this->damage);
@@ -439,7 +448,7 @@ namespace game {
 			if (CheckMove(attackPosition)) {
 				previousAttackPos = attackPosition;
 
-				Entity* attacked = Manager::Instance().GetEntityAtPos(attackPosition);
+				Entity* attacked = Manager::Instance()->GetEntityAtPos(attackPosition);
 
 				if (attacked != NULL) {
 					attacked->TakeDamage(this->damage);
@@ -454,7 +463,7 @@ namespace game {
 			if (CheckMove(attackPosition)) {
 				previousAttackPos = attackPosition;
 
-				Entity* attacked = Manager::Instance().GetEntityAtPos(attackPosition);
+				Entity* attacked = Manager::Instance()->GetEntityAtPos(attackPosition);
 
 				if (attacked != NULL) {
 					attacked->TakeDamage(this->damage);
@@ -469,7 +478,7 @@ namespace game {
 			if (CheckMove(attackPosition)) {
 				previousAttackPos = attackPosition;
 
-				Entity* attacked = Manager::Instance().GetEntityAtPos(attackPosition);
+				Entity* attacked = Manager::Instance()->GetEntityAtPos(attackPosition);
 
 				if (attacked != NULL) {
 					attacked->TakeDamage(this->damage);
@@ -519,7 +528,7 @@ namespace game {
 			mapPointer->UpdateAscii(transform.position, asciiRep);
 			attackRep = '|';
 
-			Manager::Instance().AddEntity(*this);
+			Manager::Instance()->AddEntity(*this);
 		}
 	};
 
@@ -538,7 +547,7 @@ namespace game {
 			mapPointer->UpdateAscii(transform.position, asciiRep);
 			attackRep = '|';
 
-			Manager::Instance().AddEntity(*this);
+			Manager::Instance()->AddEntity(*this);
 		}
 	};
 
@@ -559,16 +568,6 @@ namespace game {
 		}
 
 		_entityList.erase(_entityList.begin() + index);
-	}
-
-	void Manager::Awake() {
-		if (_instance.Instantiated() == false) {
-			_instance = *this;
-			_instance.Instantiated(true);
-		}
-		else {
-			throw "You have tried to create another instance of a singleton";
-		}
 	}
 
 	Entity* Manager::GetEntityAtPos(Vector2 pos) {

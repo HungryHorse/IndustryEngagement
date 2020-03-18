@@ -14,9 +14,7 @@ using namespace game;
 
 int main()
 {
-	Manager gameManager;
-
-	gameManager.Awake();
+	Manager::Instance();
 
 	std::map<std::string, std::string> mapDictionary = {
 		{"MapOne", "map.txt"}
@@ -27,6 +25,7 @@ int main()
 	gMap.LoadFromFileName(mapDictionary.find("MapOne")->second);
 	 
    	Player player({1,1}, gMap, 10);
+	Enemy enemy({1,2}, gMap, 10);
 
 	int input;
 	int counter = 0;
@@ -86,6 +85,8 @@ int main()
 			default:
 				break;
 		}
+
+		Manager::Instance();
 
 	} while (gamePlaying);
 }
