@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <stdio.h>
 #include <map>
 #include "GameInfo.cpp"
 using namespace game;
@@ -11,10 +12,16 @@ using namespace game;
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 #define ESCAPE_KEY 27
+#define KEY_W 119
+#define KEY_S 115
+#define KEY_A 97
+#define KEY_D 100
 
 int main()
 {
 	Manager::Instance();
+
+	std::vector<Enemy*> enemyObjects;
 
 	std::map<std::string, std::string> mapDictionary = {
 		{"MapOne", "map.txt"}
@@ -24,8 +31,11 @@ int main()
 	//gMap.Generate();
 	gMap.LoadFromFileName(mapDictionary.find("MapOne")->second);
 	 
-   	Player player({1,1}, gMap, 10);
-	Enemy enemy({1,2}, gMap, 10);
+   	Player* player = new Player({1,1}, gMap, 10);
+	Enemy* enemy = new Enemy({1,7}, gMap, 10);
+
+	enemyObjects.push_back(enemy);
+
 
 	int input;
 	int counter = 0;
@@ -38,45 +48,47 @@ int main()
 
 		system("CLS");
 
-		if (player.previousAttackPos != Vector2::Null() && player.transform.position != player.previousAttackPos && counter > 1)
+		if (player->previousAttackPos != Vector2::Null() && player->transform.position != player->previousAttackPos && counter > 1)
 		{
-			gMap.RevertAscii(player.previousAttackPos);
-			player.previousAttackPos = Vector2::Null();
+			gMap.RevertAscii(player->previousAttackPos);
+			player->previousAttackPos = Vector2::Null();
 		}
 
-		player.OutputHealth();
+		player->OutputHealth();
 		gMap.OutPutMap();
+
+		enemy->OutputHealth();
 
 		input = GetInput();
 
 		switch (input)
 		{
-			case 119:
-				player.MoveUp();
+			case KEY_W:
+				player->MoveUp();
 				break;
-			case 97:
-				player.MoveLeft();
+			case KEY_A:
+				player->MoveLeft();
 				break;
-			case 115:
-				player.MoveDown();
+			case KEY_S:
+				player->MoveDown();
 				break;
-			case 100:
-				player.MoveRight();
+			case KEY_D:
+				player->MoveRight();
 				break;
 			case KEY_UP:
-				player.AttackUp();
+				player->AttackUp();
 				counter = 0;
 				break;
 			case KEY_DOWN:
-				player.AttackDown();
+				player->AttackDown();
 				counter = 0;
 				break;
 			case KEY_LEFT:
-				player.AttackLeft();
+				player->AttackLeft();
 				counter = 0;
 				break;
 			case KEY_RIGHT:
-				player.AttackRight();
+				player->AttackRight();
 				counter = 0;
 				break;
 			case ESCAPE_KEY:
@@ -86,7 +98,19 @@ int main()
 				break;
 		}
 
-		Manager::Instance();
+		int entityPos = 0;
+		for (Enemy* enemy : enemyObjects) {
+			if (Manager::Instance()->GetEntityByName(enemy->entityName) == NULL) {
+				enemyObjects.erase(enemyObjects.begin() + entityPos);
+				delete enemy;
+			}
+			else
+			{
+				enemy->NextMove(player->transform.position);
+			}
+
+			entityPos++;
+		}
 
 	} while (gamePlaying);
 }
